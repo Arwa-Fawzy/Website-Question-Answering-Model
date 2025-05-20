@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RORO Responser</title>
+    <link rel="stylesheet", type="text/css", href="{{ url_for('static', filename='styles.css') }}"
+</head>
+<body>
+    <h1>RORO Responser</h1>
+    <form method="POST" action="/">
+        <label for="url">ادخل اللينك</label>
+        <input type="text" name="url" id="url" placeholder="https://www.ahram.org.eg" value="{{ request.form.get('url', '') }}">
+        <label for="question">من فضلك ادخل السؤال</label>
+        <input type="text" name="question" id="question" placeholder="ادخل سؤالك..." value="{{ request.form.get('question', '') }}"
+        <label for="chunk-size">اختر حجم المقطع:</label>
+        <select name="chunk-size" id="chunk-size">
+            <option value="200">200</option>
+            <option value="400" selected>400</option>
+            <option value="600">600</option>
+        </select>
+        <input type="submit" value="أجب على السؤال">
+    </form>
+    {% if answer %}
+    <div class="answer">
+        <h2>الاجابة:</h2>
+        {% for chunk in highlighted_chunks %}
+        <div class="highlighted-chunk">
+            {{ chunk }} [الاجابة فى هذا المقطع النصى]
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+</body>
+</html>
