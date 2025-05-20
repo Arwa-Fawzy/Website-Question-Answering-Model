@@ -34,7 +34,6 @@ The system is designed to extract and highlight precise answers from articles on
 
 ### 6. Deployment
 - Framework: Deployed using Flask.
-- API: Exposes a REST API for real-time question answering.
 - Integration: Can be connected to web interfaces or messaging platforms (optional).
 - Deliverable: Students must submit API documentation with endpoint definitions and usage examples.
 
